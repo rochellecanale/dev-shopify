@@ -722,6 +722,9 @@
       {{ product | structured_data }}
     </script>
   </div>
+
+  {% render 'product-craftsperson', { product: product } %}
+
 </product-info>
 
 {% schema %}

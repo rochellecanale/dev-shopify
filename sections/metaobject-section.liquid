@@ -1,0 +1,19 @@
+<h2>{{ metaobject.name }}</h2>
+<p>{{ metaobject.settings.section_message }}</p>
+{% schema %}
+	{
+		"name": "Metaobject Section",
+		"settings": [
+			{
+				"type": "text",
+				"label": "Section Message",
+				"id": "section_message"
+			}
+		],
+		"presets": [
+			{
+				"name": "Metaobject Section"
+			}
+		]
+	}
+{% endschema %}
