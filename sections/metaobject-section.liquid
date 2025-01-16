@@ -1,5 +1,24 @@
 <h2>{{ metaobject.name }}</h2>
-<p>{{ metaobject.settings.section_message }}</p>
+{{ metaobject.image | image_url: width: 500, height: 500 | image_tag }}
+
+<h2>Bio</h2>
+<div>
+	{{  metaobject.bio | metafield_tag }}
+</div>
+
+<h2>Products by this craftsperson</h2>
+<p>{{ section.settings.section_message }}</p>
+
+<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px">
+	{% for product in collections.all.products %}
+		{% if product.metafields.custom.craftsperson.value.system.handle == metaobject.system.handle %}
+			<a href="{{  product.url }}">
+				{{  product.featured_image | image_url: width: 250, height: 250 | image_tag }}
+				<p>{{ product.title }}</p>
+			</a>
+		{% endif %}
+	{% endfor %}
+</div>
 {% schema %}
 	{
 		"name": "Metaobject Section",
